@@ -16,13 +16,14 @@ args = parser.parse_args()
 
 dest = args.destination
 src = args.source
+vlevel = args.verbosity
 
 if not os.path.exists(src):
     sys.stderr("source path does not exists!!!")
 
 if not os.path.exists(dest):
     os.mkdir(dest)
-    if args.verbosity > 1:
+    if vlevel > 1:
             print("create destination")
 
 mp3files = []
@@ -32,7 +33,7 @@ for root, dirs, files in os.walk(src):
     for name in fnmatch.filter(files, "*.mp3"):
         mp3files.append(os.path.join(root, name))
 
-        if args.verbosity:
+        if vlevel > 1:
             print(os.path.join(root, name))
 
 if len(mp3files) == 0:
@@ -40,12 +41,12 @@ if len(mp3files) == 0:
 
 for mp3file in mp3files:
     
-    if args.verbosity > 1:
+    if vlevel > 1:
         print('mp3 file path %s' % mp3file)
 
     tag = TinyTag.get(mp3file)
 
-    if args.verbosity > 0:
+    if vlevel > 0:
         print('This track is by %s.' % tag.artist)
         print('It is %f seconds long.' % tag.duration)
 
@@ -54,19 +55,19 @@ for mp3file in mp3files:
 
     if not os.path.exists(artpath):
         os.mkdir(artpath)
-        if args.verbosity > 1:
+        if vlevel > 1:
             print(artpath)
         if not os.path.exists(albpath):
             os.mkdir(albpath)
-            if args.verbosity > 1:
+            if vlevel > 1:
                 print(albpath)
         else:
             if not os.path.exists(albpath):
                 os.mkdir(albpath)
-                if args.verbosity > 1:
+                if vlevel > 1:
                     print(albpath)
 
-    if args.verbosity > 0:
+    if vlevel > 0:
         print("MP3 File is %s" % mp3file)
         print("Move to %s" % albpath+"/"+os.path.basename(mp3file))
 
