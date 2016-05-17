@@ -98,4 +98,10 @@ for mp3file in mp3files:
         print("MP3 File is %s" % mp3file)
         print("Move to %s" % albpath+"/"+os.path.basename(mp3file))
 
+
+    if os.path.exists(albpath+"/"+os.path.basename(mp3file)):
+        temp_tag = TinyTag.get(os.path.exists(albpath+"/"+os.path.basename(mp3file)))
+        if temp_tag == tag:
+            os.remove(mp3file)
+
     shutil.move(mp3file, albpath+"/"+os.path.basename(mp3file))
