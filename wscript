@@ -1,5 +1,4 @@
 top = '.'
-out = 'build'
 
 def options(opt):
     opt.load('python')
@@ -32,3 +31,4 @@ def configure(conf):
         conf.check_python_module('fnmatch')
     except:
         print('python module fnmatch missing')
+

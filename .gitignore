@@ -214,5 +214,5 @@ _Pvt_Extensions/
 ModelManifest.xml
 
 # exclude documentation folder
-MirrorheadOSC/docu/
+songsort/docu/
 
