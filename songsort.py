@@ -33,10 +33,20 @@ for root, dirs, files in os.walk(src):
 
     for name in fnmatch.filter(files, "*.mp3"):
         mp3files.append(os.path.join(root, name))
-
         if vlevel > 1:
             print(os.path.join(root, name))
-
+    for name in fnmatch.filter(files, "*.Mp3"):
+        mp3files.append(os.path.join(root, name))
+        if vlevel > 1:
+            print(os.path.join(root, name))
+    for name in fnmatch.filter(files, "*.MP3"):
+        mp3files.append(os.path.join(root, name))
+        if vlevel > 1:
+            print(os.path.join(root, name))
+    for name in fnmatch.filter(files, "*.mP3"):
+        mp3files.append(os.path.join(root, name))
+        if vlevel > 1:
+            print(os.path.join(root, name))
     break
 
 if len(mp3files) == 0:
@@ -102,11 +112,6 @@ for mp3file in mp3files:
             print("MP3 File is %s" % mp3file)
             print("Move to %s" % albpath+"/"+os.path.basename(mp3file))
             
-        if os.path.exists(albpath+"/"+os.path.basename(mp3file)):
-            temp_tag = TinyTag.get(os.path.exists(albpath+"/"+os.path.basename(mp3file)))
-            if temp_tag == tag:
-                os.remove(mp3file)
-
         shutil.move(mp3file, albpath+"/"+os.path.basename(mp3file))
 
     except:

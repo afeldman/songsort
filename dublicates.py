@@ -25,7 +25,6 @@ def walker(arg, dirname, fnames):
         else:
             a = []
             filesBySize[size] = a
-        print(f)
         a.append(os.path.join(dirname, f))
     os.chdir(d)
 
@@ -98,5 +97,5 @@ for d in dupes:
     for f in d[1:]:
         i = i + 1
         print 'Deleting %s' % f
-        #os.remove(f)
+        os.remove(f)
     print
