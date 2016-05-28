@@ -111,8 +111,13 @@ for mp3file in mp3files:
         if vlevel > 0:
             print("MP3 File is %s" % mp3file)
             print("Move to %s" % albpath+"/"+os.path.basename(mp3file))
+
+        basename = albpath+"/"+os.path.basename(mp3file)
             
-        shutil.move(mp3file, albpath+"/"+os.path.basename(mp3file))
+        if not os.path.exists(basename):
+            shutil.move(mp3file, basename)
+        else:
+            shutil.move(mp3file, albpath+"/"+str(uuid.uuid1())+".mp3")
 
     except:
 
