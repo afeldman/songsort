@@ -67,12 +67,12 @@ for mp3file in mp3files:
             print('Audio offset %f' % tag.audio_offset)  # number of bytes before audio data begins
             print('bitrate %f' % tag.bitrate)       # bitrate in kBits/s
             print('Filesize %f' % tag.filesize)      # file size in bytes
-            print(tag.genre)         # genre as string
-            print(tag.samplerate)    # samples per second
-            print(tag.title)         # title of the song
-            print(tag.track)         # track number as string
-            print(tag.track_total)   # total number of tracks as string
-            print(tag.year)          # year or data as string
+            print('genre %s' % tag.genre)         # genre as string
+            print('sample rate %f' % tag.samplerate)    # samples per second
+            print('title %s' % tag.title)         # title of the song
+            print('track %s' % tag.track)         # track number as string
+            print('title %s' % str(tag.track_total))   # total number of tracks as string
+            print('year %s' % str(tag.year))          # year or data as string
 
         if not tag.genre:
             tag.genre = "no genre"
